@@ -14,21 +14,22 @@ import Modal from "../../containers/Modal";
 import { useData } from "../../contexts/DataContext";
 
 const Page = () => {
-  /*   const { last } = useData(); */
+  // je recupere les data comme elles sont envoyées dans DataContext
   const { data, error } = useData();
-  /*   const [last, setLast] = useState(); */
-  // recuperer le dernier en date
+  // je met en place last et setLast pour pouvoir envoyer dans mon jsx uniquement le dernier evenement
   const [last, setLast] = useState();
 
+  // j'utilise useEffect pour trier les events et setLast() uniquement quand on reçoit les data
   useEffect(() => {
     if (data !== null) {
+      data.events.sort((a, b) => new Date(b.date) - new Date(a.date));
       setLast(data.events[0]);
+    }
+    if (error) {
+      setLast(null);
     }
   }, [data]);
 
-  console.log("dans pages/Home, le useData: last ", last);
-  console.log("dans pages/Home, le useData: data ", data);
-  console.log("dans pages/Home, le useData: error ", error);
   return (
     <>
       <header>

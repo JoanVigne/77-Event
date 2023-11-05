@@ -27,7 +27,6 @@ export const DataProvider = ({ children }) => {
     }
   }, []);
   useEffect(() => {
-    console.log("dans contexts/DataContext, useeffect => data: ", data);
     if (data) return;
     getData();
   });
