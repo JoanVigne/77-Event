@@ -27,10 +27,11 @@ export const DataProvider = ({ children }) => {
     }
   }, []);
   useEffect(() => {
+    console.log("dans contexts/DataContext, useeffect => data: ", data);
     if (data) return;
     getData();
   });
-  
+
   return (
     <DataContext.Provider
       // eslint-disable-next-line react/jsx-no-constructed-context-values
@@ -46,7 +47,7 @@ export const DataProvider = ({ children }) => {
 
 DataProvider.propTypes = {
   children: PropTypes.node.isRequired,
-}
+};
 
 export const useData = () => useContext(DataContext);
 

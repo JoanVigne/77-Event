@@ -1,3 +1,4 @@
+import { useEffect, useState } from "react";
 import Menu from "../../containers/Menu";
 import ServiceCard from "../../components/ServiceCard";
 import EventCard from "../../components/EventCard";
@@ -13,7 +14,21 @@ import Modal from "../../containers/Modal";
 import { useData } from "../../contexts/DataContext";
 
 const Page = () => {
-  const { last } = useData();
+  /*   const { last } = useData(); */
+  const { data, error } = useData();
+  /*   const [last, setLast] = useState(); */
+  // recuperer le dernier en date
+  const [last, setLast] = useState();
+
+  useEffect(() => {
+    if (data !== null) {
+      setLast(data.events[0]);
+    }
+  }, [data]);
+
+  console.log("dans pages/Home, le useData: last ", last);
+  console.log("dans pages/Home, le useData: data ", data);
+  console.log("dans pages/Home, le useData: error ", error);
   return (
     <>
       <header>

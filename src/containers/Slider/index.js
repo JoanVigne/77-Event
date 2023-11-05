@@ -12,10 +12,12 @@ const Slider = () => {
     new Date(evtA.date) < new Date(evtB.date) ? -1 : 1
   );
   const nextCard = () => {
-    setTimeout(
-      () => setIndex(index + 1 < byDateDesc.length ? index + 1 : 0),
-      5000
-    );
+    if (byDateDesc !== undefined) {
+      setTimeout(
+        () => setIndex(index + 1 < byDateDesc.length ? index + 1 : 0),
+        5000
+      );
+    }
   };
   useEffect(() => {
     nextCard();
@@ -46,7 +48,8 @@ const Slider = () => {
                   key={`${_.date}.${_.title}`}
                   type="radio"
                   name="radio-button"
-                  defaultChecked={index === radioIdx}
+                  checked={radioIdx === index}
+                  onChange={() => setIndex(radioIdx)}
                 />
               ))}
             </div>
