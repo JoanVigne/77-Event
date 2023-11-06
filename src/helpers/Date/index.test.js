@@ -11,6 +11,7 @@ describe("Date helper", () => {
     });
     it("the function return juillet for 2022-07-08 as date", () => {
       // to implement
+      expect(getMonth(new Date("2022-07-08"))).toBe("juillet");
     });
   });
 });
