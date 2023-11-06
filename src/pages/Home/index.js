@@ -21,10 +21,11 @@ const Page = () => {
 
   // j'utilise useEffect pour trier les events et setLast() uniquement quand on reçoit les data
   useEffect(() => {
-    if (data !== null) {
-      data.events.sort((a, b) => new Date(b.date) - new Date(a.date));
-      setLast(data.events[0]);
+    if (data === null || typeof data === "undefined" || !data.events) {
+      return;
     }
+    data.events.sort((a, b) => new Date(b.date) - new Date(a.date));
+    setLast(data.events[0]);
     if (error) {
       setLast(null);
     }

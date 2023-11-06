@@ -5,6 +5,7 @@ import "./style.scss";
 const Logo = ({ size }) => (
   <div className="Logo">
     <svg
+      data-testid="logo"
       width={size === "large" ? "196" : "101"}
       height={size === "large" ? "67" : "35"}
       viewBox="0 0 101 35"
@@ -139,9 +140,9 @@ const Logo = ({ size }) => (
 
 Logo.propTypes = {
   size: PropTypes.string,
-}
+};
 Logo.defaultProps = {
-  size: 'small'
-}
+  size: "small",
+};
 
 export default Logo;
