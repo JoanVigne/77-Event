@@ -26,13 +26,9 @@ describe("When Form is created", () => {
         })
       );
       await screen.findByText("En cours");
-      /* PROBLEME ICI !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-       Unable to find an element with the text: Message envoyé !.
-        This could be because the text is broken up by multiple elements.
-         In this case, you can provide a function for your text matcher
-          to make your matcher more flexible.
-       */
-      /* await screen.findByText("Message envoyé !"); */
+      setTimeout(async () => {
+        await screen.findByText("Message envoyé !");
+      }, 1001);
     });
   });
 });
@@ -60,6 +56,14 @@ describe("When a page is created", () => {
   });
   it("an event card, with the last event, is displayed", () => {
     // to implement
-    render(<EventCard label="boom" imageSrc="rdm" title="test" />);
+    const fakeData = [];
+    render(
+      <EventCard
+        label="boom"
+        imageSrc="rdm"
+        title="test"
+        date={new Date(fakeData?.date)}
+      />
+    );
   });
 });

@@ -9,7 +9,6 @@ const Slider = () => {
   const [index, setIndex] = useState(0);
 
   const timeOutId = useRef(null);
-  console.log(index);
 
   const byDateDesc = data?.focus.sort((evtA, evtB) =>
     new Date(evtA.date) < new Date(evtB.date) ? -1 : 1
@@ -37,7 +36,7 @@ const Slider = () => {
   };
 
   return (
-    <div className="SlideCardList">
+    <div className="SlideCardList" key={Math.random()}>
       {byDateDesc?.map((event, idx) => (
         <div key={`${event.title}.${event.date}`}>
           <div
@@ -62,8 +61,9 @@ const Slider = () => {
                   type="radio"
                   name="radio-button"
                   defaultChecked={radioIdx === index} // fonctionne en simple click, mais ne bouge plus quand les sliders changent avec le settimeout
-                  /*   checked={radioIdx === index} */ // fonctionne en double click pour que le radio soit selectionné, simple click fait seulement le changement de slider
-                  onChange={() => handleRadioClick(radioIdx)}
+                  // checked={radioIdx === index} // fonctionne en double click pour que le radio soit selectionné, simple click fait seulement le changement de slider
+
+                  onClick={() => handleRadioClick(radioIdx)}
                 />
               ))}
             </div>
