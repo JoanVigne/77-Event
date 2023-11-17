@@ -10,6 +10,7 @@ const Slider = () => {
 
   const timeOutId = useRef(null);
 
+  // trier les data par date
   const byDateDesc = data?.focus.sort((evtA, evtB) =>
     new Date(evtA.date) < new Date(evtB.date) ? -1 : 1
   );
@@ -60,7 +61,7 @@ const Slider = () => {
                   key={`${_.date}.${_.title}`}
                   type="radio"
                   name="radio-button"
-                  defaultChecked={radioIdx === index} // fonctionne en simple click, mais ne bouge plus quand les sliders changent avec le settimeout
+                  defaultChecked={radioIdx === index}
                   // checked={radioIdx === index} // fonctionne en double click pour que le radio soit selectionné, simple click fait seulement le changement de slider
 
                   onClick={() => handleRadioClick(radioIdx)}

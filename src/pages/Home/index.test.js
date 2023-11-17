@@ -37,6 +37,8 @@ describe("When a page is created", () => {
   it("a list of events is displayed", () => {
     // to implement
     render(<EventList />);
+    expect(screen.findByText("Catégories"));
+    expect(screen.findAllByTestId("card-testid"));
   });
   it("a list a people is displayed", async () => {
     // to implement
@@ -53,6 +55,8 @@ describe("When a page is created", () => {
     // to implement
     render(<Icon name="facebook" />);
     render(<Logo size="large" />);
+    expect(screen.findAllByTestId("icon-fb"));
+    expect(screen.findAllByTestId("logo"));
   });
   it("an event card, with the last event, is displayed", () => {
     // to implement
@@ -65,5 +69,6 @@ describe("When a page is created", () => {
         date={new Date(fakeData?.date)}
       />
     );
+    expect(screen.findAllByTestId("card-image-testid"));
   });
 });
